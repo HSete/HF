@@ -1,0 +1,106 @@
+<html>
+<head>
+<title>Texto em Fala</title>
+<link rel="icon" href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAACXBIWXMAAA7DAAAOwwHHb6hkAAAAS0lEQVR42mNkoBAwUmzAfyDAqwAIaGsAMgdmGCFNZBsAkkeXI9oAdDmYYUQZgBxOyHJgQwjZgi9Qh4ABFIcB1WIBxUZ86YAcQLEBAO+0b/2JdmMqAAAAAElFTkSuQmCC">
+
+<style type="text/css">
+body {
+	background: #242424;
+	color: #C2C2C2;
+}
+table {
+	width: 99%;
+}
+input {
+	color: #FFFFFF;
+	background: #006CBE;
+	width: 100;
+	height: 50;
+	border: none;
+	border-radius: 5px;
+}
+input:hover {
+	background: #0078D4;
+	cursor: pointer;
+}
+textarea {
+	background: #4A4A4A;
+	color: #C2C2C2;
+	width: 98.9%;
+	height: 40%;
+	border: none;
+	border-radius: 5px;
+}
+</style>
+</head>
+
+
+<body><p><br></p>
+
+<table>
+	<tr>
+
+		<td>
+
+			<input
+				value='Salvar'
+				type='button'
+				onclick='s.innerText = t.value;'>
+
+			<input
+				value='Limpar'
+				type='button'
+				style='margin-left:20;'
+				onclick='s.innerText = null; t.value = null;'>
+
+		</td>
+
+
+		<td align="right">
+
+			<input
+				value='MS Edge'
+				type='button'
+				style='margin-left:20;'
+				onclick="window.open('https://www.microsoft.com/pt-BR/edge/download')">
+
+			<input
+				value='Audacity'
+				type='button'
+				style='margin-left:20;'
+				onclick="window.open('https://www.audacityteam.org')">
+
+			<input
+				value='Abrir MS Edge'
+				type='button'
+				style='width: 120; margin-left:20;'
+				onclick="window.open('microsoft-edge:https://humbertofreitas.github.io/HSete/EdgeTTS')">
+
+			<input
+				value='Tutorial'
+				type='button'
+				style='margin-left:100;'
+				onclick="window.open('https://youtu.be/sLFVEdzu5ak')">
+
+			<input
+				value='Doar'
+				type='button'
+				style='margin-left:20;'
+				onclick="window.alert('PIX: HSete@outlook.com.br');">
+
+			<input
+				value='Autor'
+				type='button'
+				style='margin-left:20;'
+				onclick="window.open('https://www.youtube.com/@HSete')">
+
+		</td>
+
+	</tr>
+</table><p></p>
+
+<textarea id='t'></textarea><p></p>
+<span id='s'></span>
+
+</body>
+</html>
