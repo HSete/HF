@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>HSete</title>
+<link rel="icon" href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAACXBIWXMAAB7CAAAewgFu0HU+AAAAO0lEQVR42mNkoBAwUtWA/0AAlwACYuSGkAEUhwHZBrxT0PqPrknowTXivUCxATCAbNCoAXgMIAdQbAAAO5RYERJwArAAAAAASUVORK5CYII=">
+
+<style type="text/css">
+body {
+	background: #242424;
+	color: white;
+	font-family: Arial, sans-serif;
+	margin: 0;
+	padding: 0;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	height: 100vh;
+}
+.container {
+	width: 90%;
+	max-width: 800px;
+	padding: 20px;
+	text-align: center;
+}
+input[type="button"] {
+	font-size: 40px;
+	font-weight: bold;
+	color: white;
+	background: #3E3C3A;
+	width: 300px;
+	height: 80px;
+	border: 2px solid #3E3C3A;
+	border-radius: 5px;
+	cursor: pointer;
+	margin-top: 30px;
+}
+input[type="button"]:hover {
+	background: #484745;
+}
+h1 {
+	font-size: 24px;
+	font-weight: bold;
+	margin-top: 20px;
+}
+img {
+	display: block;
+	margin: 20px auto;
+	max-width: 100%;
+	border-radius: 10px;
+}
+.chave-pix {
+	font-size: 18px;
+	font-weight: bold;
+}
+</style>
+</head>
+
+<body>
+<div class="container">
+	<h1>Se possível, apoie o canal:</h1>
+	<img src="./img/qrcode.png" width="350">
+	<p><strong class="chave-pix">Chave Pix:</strong> HSete@outlook.com.br</p>
+	<input type="button" value="Download" id="URL">
+</div>
+
+<script type="text/javascript">
+window.onload = function() {
+	var tag = window.location.href.split("#")[1];
+	var button = document.getElementById("URL");
+
+	button.value = tag ? "Download" : "Youtube";
+	button.onclick = function() {
+		window.open(tag ? "https://github.com/HSete/HF/releases/tag/" + tag : "https://www.youtube.com/@HSete");
+	};
+};
+</script>
+
+</body>
+</html>
