@@ -10,8 +10,8 @@
 <link rel="icon" href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAACXBIWXMAAB7CAAAewgFu0HU+AAAAO0lEQVR42mNkoBAwUtWA/0AAlwACYuSGkAEUhwHZBrxT0PqPrknowTXivUCxATCAbNCoAXgMIAdQbAAAO5RYERJwArAAAAAASUVORK5CYII=">
 
 <style type="text/css">
-	html, body {
-		height: 100%;
+	body {
+		min-height: 100vh;
 		background: #0D1117;
 		color: #E6EDF3;
 		font-family: Arial, sans-serif;
@@ -23,6 +23,10 @@
 		user-select: none;
 	}
 
+	#Caixa {
+		border-radius: 10px 10px 10px 10px;
+	}
+
 	img {
 		max-width: 100%;
 		border: 10px solid #30363D;
@@ -31,7 +35,7 @@
 
 	#ChavePix {
 		align-items: center;
-		margin: -4px 0px 20px 0px;
+		margin: -5px 0px 20px 0px;
 		background-color: #161B22;
 		border: 4px solid #30363D;
 		border-top: none;
@@ -72,6 +76,22 @@
 		transform: scaleX(1);
 	}
 
+	#Mensagem {
+		position: absolute;
+		left: 40%;
+		top: -10%;
+		background-color: #3FB950;
+		color: #0D1117;
+		font-size: 18px;
+		font-weight: bold;
+		border-radius: 10px 10px 0px 10px;
+		padding: 4px;
+		margin-left: -10px;
+		transform: translateY(-50%);
+		display: none;
+		white-space: nowrap;
+	}
+
 	#Link {
 		width: 300px;
 		height: 80px;
@@ -93,35 +113,21 @@
 		background: #292E36;
 	}
 
-	#Mensagem {
-		position: absolute;
-		left: 40%;
-		top: -10%;
-		background-color: #3FB950;
-		color: #0D1117;
-		font-size: 18px;
-		font-weight: bold;
-		border-radius: 10px 10px 00px 10px;
-		padding: 4px;
-		margin-left: -10px;
-		transform: translateY(-50%);
-		display: none;
-		white-space: nowrap;
-	}
-
-	img, #ChavePix, #Copiar, #Mensagem, #Link {
+	#Caixa, #Copiar, #Mensagem, #Link {
 		box-shadow: 4px 4px 6px 0px rgba(0,0,0,0.5);
 	}
 </style>
 
 <body>
-	<div align="center";>
+	<div align="center">
 		<h2>Se possível, apoie pelo Pix:</h2>
-		<img src="./img/qrcode.png" width="350" height="350" draggable="false">
-		<div id="ChavePix">
+		<div id="Caixa">
+			<img src="./img/qrcode.png" width="350" height="350" draggable="false">
+			<div id="ChavePix">
 				<span><strong>Chave Pix: </strong>HSete@outlook.com.br</span>
 				<button id="Copiar"><span id="ico">&boxbox;</span></button>
 				<div id="Mensagem">CHAVE COPIADA</div>
+			</div>
 		</div>
 		<input type="button" id="Link">
 	</div>
