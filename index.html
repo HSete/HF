@@ -133,21 +133,25 @@
 	</div>
 
 	<script type="text/javascript">
-
 		window.onload = function() {
-			var github = (window.location.href.match(/\/\?(?!\!)(.*)/) || [])[1] || '';
-			var gist = (window.location.href.match(/\/\?\!(.*)/) || [])[1] || '';
-			var btn = document.getElementById("Link");
+			const urlSP = new URLSearchParams(window.location.search);
+			const _gith = urlSP.get('A') || '';
+			const _gist = urlSP.get('T') || '';
+			const btn = document.getElementById("Link");
 
-			if (github || gist) {btn.value = "Continuar";} else {btn.value = "Youtube";}
+			if (_gith || _gist) {
+				btn.value = "Continuar";
+			} else {
+				btn.value = "Youtube";
+			}
 
 			btn.onclick = function() {	
 				switch (true) {
-					case (github !== ''):
-						window.open("https://github.com/HSete/HF/releases/tag/" + github);
+					case (_gith !== ''):
+						window.open("https://github.com/HSete/HF/releases/tag/" + _gith);
 						break;
-					case (gist !== ''):
-						window.open("https://gist.github.com/HSete/" + gist);
+					case (_gist !== ''):
+						window.open("https://gist.github.com/HSete/" + _gist);
 						break;
 					default:
 						window.open("https://www.youtube.com/@HSete");
@@ -175,7 +179,6 @@
 				_Copiar.disabled = false;
 			});
 		});
-
 	</script>
 </body>
 </html>
