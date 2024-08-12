@@ -129,18 +129,29 @@
 				<div id="Mensagem">CHAVE COPIADA</div>
 			</div>
 		</div>
-		<input type="button" id="Link">
+		<input type="button" id="Link" >
 	</div>
 
 	<script type="text/javascript">
 
 		window.onload = function() {
-			var tag = window.location.href.split("?")[1];
-			var button = document.getElementById("Link");
+			var github = (window.location.href.match(/\/\?(?!\!)(.*)/) || [])[1] || '';
+			var gist = (window.location.href.match(/\/\?\!(.*)/) || [])[1] || '';
+			var btn = document.getElementById("Link");
 
-			button.value = tag ? "Continuar" : "Youtube";
-			button.onclick = function() {
-				window.open(tag ? "https://github.com/HSete/HF/releases/tag/" + tag : "https://www.youtube.com/@HSete");
+			if (github || gist) {btn.value = "Continuar";} else {btn.value = "Youtube";}
+
+			btn.onclick = function() {	
+				switch (true) {
+					case (github !== ''):
+						window.open("https://github.com/HSete/HF/releases/tag/" + github);
+						break;
+					case (gist !== ''):
+						window.open("https://gist.github.com/HSete/" + gist);
+						break;
+					default:
+						window.open("https://www.youtube.com/@HSete");
+				}
 			};
 		};
 
