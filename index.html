@@ -1,10 +1,12 @@
-
-<!-- Copyright (c) 2024 Humberto Freitas -->
-
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
 <meta charset="UTF-8">
+
+
+<!-- Copyright (c) 2024 Humberto Freitas -->
+
+
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>HSete</title>
 <link rel="icon" href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAACXBIWXMAAB7CAAAewgFu0HU+AAAAO0lEQVR42mNkoBAwUtWA/0AAlwACYuSGkAEUhwHZBrxT0PqPrknowTXivUCxATCAbNCoAXgMIAdQbAAAO5RYERJwArAAAAAASUVORK5CYII=">
@@ -24,24 +26,24 @@
 	}
 
 	#Caixa {
-		border-radius: 10px 10px 10px 10px;
+		border-radius: 10px;
 	}
 
 	img {
 		max-width: 100%;
 		border: 10px solid #30363D;
-		border-radius: 10px 10px 0px 0px;
+		border-radius: 10px 10px 0 0;
 	}
 
 	#ChavePix {
 		align-items: center;
-		margin: -5px 0px 20px 0px;
+		margin: -5px 0 20px 0;
 		background-color: #161B22;
 		border: 4px solid #30363D;
 		border-top: none;
 		padding: 10px 10px;
 		position: relative;
-		border-radius: 0px 0px 10px 10px;
+		border-radius: 0 0 10px 10px;
 	}
 
 	#Copiar {
@@ -84,7 +86,7 @@
 		color: #0D1117;
 		font-size: 18px;
 		font-weight: bold;
-		border-radius: 10px 10px 0px 10px;
+		border-radius: 10px 10px 0 10px;
 		padding: 4px;
 		margin-left: -10px;
 		transform: translateY(-50%);
@@ -105,18 +107,15 @@
 		margin-top: 10px;
 	}
 
-	#Link:hover {
-		background: #292E36;
-	}
-
 	#Link:hover, #Copiar:hover {
 		background: #292E36;
 	}
 
 	#Caixa, #Copiar, #Mensagem, #Link {
-		box-shadow: 4px 4px 6px 0px rgba(0,0,0,0.5);
+		box-shadow: 4px 4px 6px 0 rgba(0,0,0,0.5);
 	}
 </style>
+</head>
 
 <body>
 	<div align="center">
@@ -129,56 +128,56 @@
 				<div id="Mensagem">CHAVE COPIADA</div>
 			</div>
 		</div>
-		<input type="button" id="Link" >
+		<button id="Link"></button>
 	</div>
 
-	<script type="text/javascript">
-		window.onload = function() {
-			const urlSP = new URLSearchParams(window.location.search);
-			const _gith = urlSP.get('A') || '';
-			const _gist = urlSP.get('T') || '';
-			const btn = document.getElementById("Link");
+<script type="text/javascript">
+	window.onload = function() {
+		const urlSP = new URLSearchParams(window.location.search);
+		const _gith = urlSP.get('A') || '';
+		const _gist = urlSP.get('T') || '';
+		const btn = document.getElementById("Link");
 
-			if (_gith || _gist) {
-				btn.value = "Continuar";
-			} else {
-				btn.value = "Youtube";
+		if (_gith || _gist) {
+			btn.textContent = "Continuar";
+		} else {
+			btn.textContent = "Youtube";
+		}
+
+		btn.onclick = function() {	
+			switch (true) {
+				case (_gith !== ''):
+					window.open("https://github.com/HSete/HF/releases/tag/" + _gith);
+					break;
+				case (_gist !== ''):
+					window.open("https://gist.github.com/HSete/" + _gist);
+					break;
+				default:
+					window.open("https://www.youtube.com/@HSete");
 			}
-
-			btn.onclick = function() {	
-				switch (true) {
-					case (_gith !== ''):
-						window.open("https://github.com/HSete/HF/releases/tag/" + _gith);
-						break;
-					case (_gist !== ''):
-						window.open("https://gist.github.com/HSete/" + _gist);
-						break;
-					default:
-						window.open("https://www.youtube.com/@HSete");
-				}
-			};
 		};
+	};
 
-		document.getElementById('Copiar').addEventListener('click', function() {
-			const _Copiar = document.getElementById('Copiar');
-			const _ico = document.getElementById('ico');
-			const _Mensagem = document.getElementById('Mensagem');
+	document.getElementById('Copiar').addEventListener('click', function() {
+		const _Copiar = document.getElementById('Copiar');
+		const _ico = document.getElementById('ico');
+		const _Mensagem = document.getElementById('Mensagem');
 
-			_ico.innerText = '\u{2714}';
-			_Copiar.disabled = true;
+		_ico.innerText = '\u{2714}';
+		_Copiar.disabled = true;
 
-			navigator.clipboard.writeText("HSete@outlook.com.br").then(() => {
-				_Mensagem.style.display = 'block';
+		navigator.clipboard.writeText("HSete@outlook.com.br").then(() => {
+			_Mensagem.style.display = 'block';
 
-				setTimeout(() => {
-					_Mensagem.style.display = 'none';
-					_Copiar.disabled = false;
-					_ico.innerText = '\u{029C9}'
-				}, 3000);
-			}).catch(err => {
+			setTimeout(() => {
+				_Mensagem.style.display = 'none';
 				_Copiar.disabled = false;
-			});
+				_ico.innerText = '\u{029C9}'
+			}, 3000);
+		}).catch(err => {
+			_Copiar.disabled = false;
 		});
-	</script>
+	});
+</script>
 </body>
 </html>
