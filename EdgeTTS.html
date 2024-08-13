@@ -1,9 +1,9 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Texto em Fala</title>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Texto em Fala</title>
 	<link rel="icon" href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAACXBIWXMAAA7DAAAOwwHHb6hkAAAAS0lEQVR42mNkoBAwUmzAfyDAqwAIaGsAMgdmGCFNZBsAkkeXI9oAdDmYYUQZgBxOyHJgQwjZgi9Qh4ABFIcB1WIBxUZ86YAcQLEBAO+0b/2JdmMqAAAAAElFTkSuQmCC">
 
 
@@ -11,118 +11,117 @@
 
 
 	<style>
-        body {
-            background-color: #0D1117;
-            margin: 0;
-            font-family: Arial, sans-serif;
+		body {
+			background-color: #161B22;
+			margin: 0;
+			font-family: Arial, sans-serif;
         }
 
         .cont_m {
-            display: flex;
-            flex-direction: column;
-            height: 100vh;
+			display: flex;
+			flex-direction: column;
+			height: 100vh;
         }
 
         .cont_btn {
-            display: flex;
-            justify-content: space-between;
-            padding: 20px;
-            background-color: #0D1117;
+			display: flex;
+			justify-content: space-between;
+			padding: 20px;
         }
 
         .cont_btn input {
-			background-color: #21262D;
-			color: #C9D1D9;
 			border: 2px solid #30363D;
 			padding: 10px 20px;
 			cursor: pointer;
 			font-size: 25px;
 			margin: 10px;
 			border-radius: 10px;
+			box-shadow: 4px 4px 6px 0 rgba(0,0,0,0.5);
         }
 
         #btn_clear {
-            background-color: #21262D;
-            color: #F84537;
-            border-color: #30363D;
+			background-color: #21262D;
+			color: #F84537;
+			border-color: #30363D;
         }
 
         #btn_clear:hover {
-            background-color: #B62324;
-            border-color: #BB383A;
-            color: #FFFFFF;
+			background-color: #B62324;
+			color: #FFFFFF;
+			border-color: #BB383A;
+
         }
 
         #btn_tutorial, #btn_donate, #btn_youtube {
-            background-color: #21262D;
-            color: #C9D1D9;
-            border-color: #30363D;
+			background-color: #21262D;
+			color: #C9D1D9;
+			border-color: #30363D;
         }
 
         #btn_tutorial:hover, #btn_donate:hover, #btn_youtube:hover {
-            background-color: #292E36;
-            border-color: #30363D;
-            color: #C9D1D9;
+			background-color: #292E36;
+			color: #C9D1D9;
+			border-color: #30363D;
         }
 
         .cont_text {
-            display: flex;
-            flex-direction: column;
-            flex-grow: 1;
+			display: flex;
+			flex-direction: column;
+			flex-grow: 1;
         }
 
         #_write {
-            width: 100%;
-            height: 40%;
-            background-color: #0D1117;
-            border: 6px solid #30363D;
-            color: #C9D1D9;
-            box-sizing: border-box;
-            resize: none;
+			width: 100%;
+			height: 40%;
+			background-color: #0D1117;
+			color: #C9D1D9;
+			border: 6px solid #30363D;
+			border-radius: 10px;
+			box-sizing: border-box;
+			resize: none;
 			outline: none;
         }
 
         #_read {
-            display: block;
-            width: 100%;
-            background-color: #161B22;
-            color: #8D96A0;
-            padding: 10px;
-            border-radius: 5px;
-            box-sizing: border-box;
-            overflow-y: auto;
-            height: calc(60vh - 10px);
-            word-wrap: break-word;
-            white-space: pre-wrap;
+			display: block;
+			width: 100%;
+			color: #8D96A0;
+			padding: 10px;
+			border-radius: 5px;
+			box-sizing: border-box;
+			overflow-y: auto;
+			height: calc(60vh - 10px);
+			word-wrap: break-word;
+			white-space: pre-wrap;
         }
 
         .modal_bg {
-            display: none;
-            position: fixed;
-            left: 0;
-            top: 0;
-            width: 100%;
-            height: 100%;
-            overflow: auto;
-            background-color: rgba(0, 0, 0, 0.6);
-            z-index: 1000;
+			display: none;
+			position: fixed;
+			left: 0;
+			top: 0;
+			width: 100%;
+			height: 100%;
+			overflow: auto;
+			background-color: rgba(0, 0, 0, 0.6);
+			z-index: 1000;
         }
 
         .modal_m {
-            background-color: #161B22;
-            margin: 15% auto;
-            padding: 20px;
-            border: 4px solid #30363D;
-            width: 80%;
-            max-width: 500px;
-            color: #C9D1D9;
-            border-radius: 10px;
-            position: absolute;
+			background-color: #161B22;
+			margin: 15% auto;
+			padding: 20px;
+			border: 4px solid #30363D;
+			width: 80%;
+			max-width: 500px;
+			color: #C9D1D9;
+			border-radius: 10px;
+			position: absolute;
 			text-align: center;
-            top: 0;
-            left: 50%;
-            transform: translateX(-50%);
-            margin-top: 20px;
+			top: 0;
+			left: 50%;
+			transform: translateX(-50%);
+			margin-top: 20px;
         }
 
 		.modal_header {
@@ -130,8 +129,8 @@
 		}
 
 		.modal_header h2 {
-            margin: 0;
-            text-align: center;
+			margin: 0;
+			text-align: center;
 		}
 		
 		img {
@@ -143,30 +142,30 @@
 <body>
     <div class="cont_m">
         <div class="cont_btn">
-            <div>
-                <input type="button" id="btn_clear" value="Limpar">
-            </div>
-            <div>
-                <input type="button" id="btn_tutorial" value="Tutorial" onclick="window.open('https://gist.github.com/HSete/53f394282358af140e8e8e6a32baa650', '_blank')">
-                <input type="button" id="btn_donate" value="Apoiar">
-                <input type="button" id="btn_youtube" value="Autor" onclick="window.open('https://www.youtube.com/@HSete', '_blank')">
-            </div>
+			<div>
+			    <input type="button" id="btn_clear" value="Limpar">
+			</div>
+			<div>
+			    <input type="button" id="btn_tutorial" value="Tutorial" onclick="window.open('https://gist.github.com/HSete/53f394282358af140e8e8e6a32baa650', '_blank')">
+			    <input type="button" id="btn_donate" value="Apoiar">
+			    <input type="button" id="btn_youtube" value="Autor" onclick="window.open('https://www.youtube.com/@HSete', '_blank')">
+			</div>
         </div>
         <div class="cont_text">
-            <textarea id="_write"></textarea>
-            <span id="_read"></span>
+			<textarea id="_write"></textarea>
+			<span id="_read"></span>
         </div>
     </div>
 
     <div id="modal_bg" class="modal_bg">
         <div class="modal_m">
-            <div class="modal_header">
-                <h2>Apoie pelo Pix:</h2>
-            </div>
-            <div class="modal_body">
-                <p><img src="./img/qrcode.png" draggable="false"></p>
-                <p><span><strong>Chave Pix: </strong>HSete@outlook.com.br</span></p>
-            </div>
+			<div class="modal_header">
+			    <h2>Apoie pelo Pix:</h2>
+			</div>
+			<div class="modal_body">
+			    <p><img src="./img/qrcode.png" draggable="false"></p>
+			    <p><span><strong>Chave Pix: </strong>HSete@outlook.com.br</span></p>
+			</div>
         </div>
     </div>
 
@@ -177,19 +176,19 @@
 		});
 
         document.getElementById('btn_clear').addEventListener('click', function() {
-            document.getElementById('_write').value = '';
-            document.getElementById('_read').textContent = '';
+			document.getElementById('_write').value = '';
+			document.getElementById('_read').textContent = '';
         });
 
         document.getElementById('btn_donate').addEventListener('click', function() {
-            document.getElementById('modal_bg').style.display = 'block';
+			document.getElementById('modal_bg').style.display = 'block';
         });
 
         window.onclick = function(event) {
-            if (event.target === document.getElementById('modal_bg')) {
-                document.getElementById('modal_bg').style.display = 'none';
-            }
-        }
+			if (event.target === document.getElementById('modal_bg')) {
+			    document.getElementById('modal_bg').style.display = 'none';
+			}
+		}
 
 		document.getElementById('_write').addEventListener('input', function() {
 			document.getElementById('_read').textContent = document.getElementById('_write').value;
