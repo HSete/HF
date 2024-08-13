@@ -36,21 +36,9 @@
 			border: 2px solid #30363D;
 			padding: 10px 20px;
 			cursor: pointer;
-			font-size: 20px;
+			font-size: 25px;
 			margin: 10px;
 			border-radius: 10px;
-        }
-
-        #btn_save {
-            background-color: #21262D;
-            color: #3FB950;
-            border-color: #30363D;
-        }
-
-        #btn_save:hover {
-			color: #FFFFFF;
-            background-color: #3FB950;
-            border-color: #3D9A4F;
         }
 
         #btn_clear {
@@ -156,7 +144,6 @@
     <div class="cont_m">
         <div class="cont_btn">
             <div>
-                <input type="button" id="btn_save" value="Salvar">
                 <input type="button" id="btn_clear" value="Limpar">
             </div>
             <div>
@@ -184,9 +171,10 @@
     </div>
 
     <script>
-        document.getElementById('btn_save').addEventListener('click', function() {
-            document.getElementById('_read').textContent = document.getElementById('_write').value;
-        });
+		window.addEventListener('DOMContentLoaded', function() {
+			document.getElementById('_write').value = '';
+			document.getElementById('_read').textContent = '';
+		});
 
         document.getElementById('btn_clear').addEventListener('click', function() {
             document.getElementById('_write').value = '';
@@ -202,6 +190,10 @@
                 document.getElementById('modal_bg').style.display = 'none';
             }
         }
+
+		document.getElementById('_write').addEventListener('input', function() {
+			document.getElementById('_read').textContent = document.getElementById('_write').value;
+		});
     </script>
 </body>
 </html>
