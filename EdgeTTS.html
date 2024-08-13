@@ -1,106 +1,207 @@
-<html>
+<!DOCTYPE html>
+<html lang="pt-BR">
 <head>
-<title>Texto em Fala</title>
-<link rel="icon" href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAACXBIWXMAAA7DAAAOwwHHb6hkAAAAS0lEQVR42mNkoBAwUmzAfyDAqwAIaGsAMgdmGCFNZBsAkkeXI9oAdDmYYUQZgBxOyHJgQwjZgi9Qh4ABFIcB1WIBxUZ86YAcQLEBAO+0b/2JdmMqAAAAAElFTkSuQmCC">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Texto em Fala</title>
+	<link rel="icon" href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAACXBIWXMAAA7DAAAOwwHHb6hkAAAAS0lEQVR42mNkoBAwUmzAfyDAqwAIaGsAMgdmGCFNZBsAkkeXI9oAdDmYYUQZgBxOyHJgQwjZgi9Qh4ABFIcB1WIBxUZ86YAcQLEBAO+0b/2JdmMqAAAAAElFTkSuQmCC">
 
-<style type="text/css">
-body {
-	background: #242424;
-	color: #C2C2C2;
-}
-table {
-	width: 99%;
-}
-input {
-	color: #FFFFFF;
-	background: #006CBE;
-	width: 100;
-	height: 50;
-	border: none;
-	border-radius: 5px;
-}
-input:hover {
-	background: #0078D4;
-	cursor: pointer;
-}
-textarea {
-	background: #4A4A4A;
-	color: #C2C2C2;
-	width: 98.9%;
-	height: 40%;
-	border: none;
-	border-radius: 5px;
-}
-</style>
+
+	<!-- Copyright (c) 2024 Humberto Freitas -->
+
+
+	<style>
+        body {
+            background-color: #0D1117;
+            margin: 0;
+            font-family: Arial, sans-serif;
+        }
+
+        .cont_m {
+            display: flex;
+            flex-direction: column;
+            height: 100vh;
+        }
+
+        .cont_btn {
+            display: flex;
+            justify-content: space-between;
+            padding: 20px;
+            background-color: #0D1117;
+        }
+
+        .cont_btn input {
+			background-color: #21262D;
+			color: #C9D1D9;
+			border: 2px solid #30363D;
+			padding: 10px 20px;
+			cursor: pointer;
+			font-size: 20px;
+			margin: 10px;
+			border-radius: 10px;
+        }
+
+        #btn_save {
+            background-color: #21262D;
+            color: #3FB950;
+            border-color: #30363D;
+        }
+
+        #btn_save:hover {
+			color: #FFFFFF;
+            background-color: #3FB950;
+            border-color: #3D9A4F;
+        }
+
+        #btn_clear {
+            background-color: #21262D;
+            color: #F84537;
+            border-color: #30363D;
+        }
+
+        #btn_clear:hover {
+            background-color: #B62324;
+            border-color: #BB383A;
+            color: #FFFFFF;
+        }
+
+        #btn_tutorial, #btn_donate, #btn_youtube {
+            background-color: #21262D;
+            color: #C9D1D9;
+            border-color: #30363D;
+        }
+
+        #btn_tutorial:hover, #btn_donate:hover, #btn_youtube:hover {
+            background-color: #292E36;
+            border-color: #30363D;
+            color: #C9D1D9;
+        }
+
+        .cont_text {
+            display: flex;
+            flex-direction: column;
+            flex-grow: 1;
+        }
+
+        #_write {
+            width: 100%;
+            height: 40%;
+            background-color: #0D1117;
+            border: 6px solid #30363D;
+            color: #C9D1D9;
+            box-sizing: border-box;
+            resize: none;
+			outline: none;
+        }
+
+        #_read {
+            display: block;
+            width: 100%;
+            background-color: #161B22;
+            color: #8D96A0;
+            padding: 10px;
+            border-radius: 5px;
+            box-sizing: border-box;
+            overflow-y: auto;
+            height: calc(60vh - 10px);
+            word-wrap: break-word;
+            white-space: pre-wrap;
+        }
+
+        .modal_bg {
+            display: none;
+            position: fixed;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            overflow: auto;
+            background-color: rgba(0, 0, 0, 0.6);
+            z-index: 1000;
+        }
+
+        .modal_m {
+            background-color: #161B22;
+            margin: 15% auto;
+            padding: 20px;
+            border: 4px solid #30363D;
+            width: 80%;
+            max-width: 500px;
+            color: #C9D1D9;
+            border-radius: 10px;
+            position: absolute;
+			text-align: center;
+            top: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            margin-top: 20px;
+        }
+
+		.modal_header {
+			position: relative;
+		}
+
+		.modal_header h2 {
+            margin: 0;
+            text-align: center;
+		}
+		
+		img {
+			width: 340px;
+			height: 340px;
+		}
+    </style>
 </head>
+<body>
+    <div class="cont_m">
+        <div class="cont_btn">
+            <div>
+                <input type="button" id="btn_save" value="Salvar">
+                <input type="button" id="btn_clear" value="Limpar">
+            </div>
+            <div>
+                <input type="button" id="btn_tutorial" value="Tutorial" onclick="window.open('https://gist.github.com/HSete/53f394282358af140e8e8e6a32baa650', '_blank')">
+                <input type="button" id="btn_donate" value="Apoiar">
+                <input type="button" id="btn_youtube" value="Autor" onclick="window.open('https://www.youtube.com/@HSete', '_blank')">
+            </div>
+        </div>
+        <div class="cont_text">
+            <textarea id="_write"></textarea>
+            <span id="_read"></span>
+        </div>
+    </div>
 
+    <div id="modal_bg" class="modal_bg">
+        <div class="modal_m">
+            <div class="modal_header">
+                <h2>Apoie pelo Pix:</h2>
+            </div>
+            <div class="modal_body">
+                <p><img src="./img/qrcode.png" draggable="false"></p>
+                <p><span><strong>Chave Pix: </strong>HSete@outlook.com.br</span></p>
+            </div>
+        </div>
+    </div>
 
-<body><p><br></p>
+    <script>
+        document.getElementById('btn_save').addEventListener('click', function() {
+            document.getElementById('_read').textContent = document.getElementById('_write').value;
+        });
 
-<table>
-	<tr>
+        document.getElementById('btn_clear').addEventListener('click', function() {
+            document.getElementById('_write').value = '';
+            document.getElementById('_read').textContent = '';
+        });
 
-		<td>
+        document.getElementById('btn_donate').addEventListener('click', function() {
+            document.getElementById('modal_bg').style.display = 'block';
+        });
 
-			<input
-				value='Salvar'
-				type='button'
-				onclick='s.innerText = t.value;'>
-
-			<input
-				value='Limpar'
-				type='button'
-				style='margin-left:20;'
-				onclick='s.innerText = null; t.value = null;'>
-
-		</td>
-
-
-		<td align="right">
-
-			<input
-				value='MS Edge'
-				type='button'
-				style='margin-left:20;'
-				onclick="window.open('https://www.microsoft.com/pt-BR/edge/download')">
-
-			<input
-				value='Audacity'
-				type='button'
-				style='margin-left:20;'
-				onclick="window.open('https://www.audacityteam.org')">
-
-			<input
-				value='Abrir MS Edge'
-				type='button'
-				style='width: 120; margin-left:20;'
-				onclick="window.open('microsoft-edge:https://humbertofreitas.github.io/HSete/EdgeTTS')">
-
-			<input
-				value='Tutorial'
-				type='button'
-				style='margin-left:100;'
-				onclick="window.open('https://youtu.be/sLFVEdzu5ak')">
-
-			<input
-				value='Doar'
-				type='button'
-				style='margin-left:20;'
-				onclick="window.alert('PIX: HSete@outlook.com.br');">
-
-			<input
-				value='Autor'
-				type='button'
-				style='margin-left:20;'
-				onclick="window.open('https://www.youtube.com/@HSete')">
-
-		</td>
-
-	</tr>
-</table><p></p>
-
-<textarea id='t'></textarea><p></p>
-<span id='s'></span>
-
+        window.onclick = function(event) {
+            if (event.target === document.getElementById('modal_bg')) {
+                document.getElementById('modal_bg').style.display = 'none';
+            }
+        }
+    </script>
 </body>
 </html>

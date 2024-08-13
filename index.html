@@ -1,183 +1,187 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
-<meta charset="UTF-8">
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>HSete</title>
+	<link rel="icon" href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAACXBIWXMAAB7CAAAewgFu0HU+AAAAO0lEQVR42mNkoBAwUtWA/0AAlwACYuSGkAEUhwHZBrxT0PqPrknowTXivUCxATCAbNCoAXgMIAdQbAAAO5RYERJwArAAAAAASUVORK5CYII=">
 
 
-<!-- Copyright (c) 2024 Humberto Freitas -->
+	<!-- Copyright (c) 2024 Humberto Freitas -->
 
 
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>HSete</title>
-<link rel="icon" href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAACXBIWXMAAB7CAAAewgFu0HU+AAAAO0lEQVR42mNkoBAwUtWA/0AAlwACYuSGkAEUhwHZBrxT0PqPrknowTXivUCxATCAbNCoAXgMIAdQbAAAO5RYERJwArAAAAAASUVORK5CYII=">
-
-<style type="text/css">
-	body {
-		min-height: 100vh;
-		background: #0D1117;
-		color: #E6EDF3;
-		font-family: Arial, sans-serif;
-		margin: 0;
-		padding: 0;
-		display: flex;
-		justify-content: center;
-		align-items: center;
-		user-select: none;
-	}
-
-	#Caixa {
-		border-radius: 10px;
-	}
-
-	img {
-		max-width: 100%;
-		border: 10px solid #30363D;
-		border-radius: 10px 10px 0 0;
-	}
-
-	#ChavePix {
-		align-items: center;
-		margin: -5px 0 20px 0;
-		background-color: #161B22;
-		border: 4px solid #30363D;
-		border-top: none;
-		padding: 10px 10px;
-		position: relative;
-		border-radius: 0 0 10px 10px;
-	}
-
-	#Copiar {
-		width: 50px;
-		height: 50px;
-		background-color: #21262D;
-		color: #E6EDF3;
-		font-size: 14px;
-		border: 2px solid #30363D;
-		border-radius: 10px;
-		cursor: pointer;
-		margin-left: 19px;
-		position: relative;
-		white-space: nowrap;
-		overflow: hidden;
-	}
-
-	#ico {
-		display: inline-block;
-		transform: scaleX(-1);
-	}
-
-	#Copiar:disabled {
-		background-color: #292E36;
-		color: #238636;
-		border: 2px solid #238636;
-		cursor: default;
-		font-weight: bold;
-	}
-
-	#Copiar:disabled #ico {
-		transform: scaleX(1);
-	}
-
-	#Mensagem {
-		position: absolute;
-		left: 39%;
-		top: -7%;
-		background-color: #3FB950;
-		color: #0D1117;
-		font-size: 18px;
-		font-weight: bold;
-		border-radius: 10px 10px 0 10px;
-		padding: 4px;
-		margin-left: -10px;
-		transform: translateY(-50%);
-		display: none;
-		white-space: nowrap;
-	}
-
-	#Link {
-		width: 300px;
-		height: 80px;
-		background: #21262D;
-		color: #E6EDF3;
-		font-size: 40px;
-		font-weight: bold;
-		border: 2px solid #30363D;
-		border-radius: 5px;
-		cursor: pointer;
-		margin-top: 10px;
-	}
-
-	#Link:hover, #Copiar:hover {
-		background: #292E36;
-	}
-
-	#Caixa, #Copiar, #Mensagem, #Link {
-		box-shadow: 4px 4px 6px 0 rgba(0,0,0,0.5);
-	}
-</style>
-</head>
-
-<body>
-	<div align="center">
-		<h2>Se possível, apoie pelo Pix:</h2>
-		<div id="Caixa">
-			<img src="./img/qrcode.png" width="340" height="340" draggable="false">
-			<div id="ChavePix">
-				<span><strong>Chave Pix: </strong>HSete@outlook.com.br</span>
-				<button id="Copiar"><span id="ico">&boxbox;</span></button>
-				<div id="Mensagem">CHAVE COPIADA</div>
-			</div>
-		</div>
-		<button id="Link"></button>
-	</div>
-
-<script type="text/javascript">
-	window.onload = function() {
-		const urlSP = new URLSearchParams(window.location.search);
-		const _gith = urlSP.get('A') || '';
-		const _gist = urlSP.get('T') || '';
-		const btn = document.getElementById("Link");
-
-		if (_gith || _gist) {
-			btn.textContent = "Continuar";
-		} else {
-			btn.textContent = "Youtube";
+	<style type="text/css">
+		body {
+			min-height: 100vh;
+			background: #0D1117;
+			color: #E6EDF3;
+			font-family: Arial, sans-serif;
+			margin: 0;
+			padding: 0;
+			display: flex;
+			justify-content: center;
+			align-items: center;
+			user-select: none;
 		}
 
-		btn.onclick = function() {	
-			switch (true) {
-				case (_gith !== ''):
-					window.open("https://github.com/HSete/HF/releases/tag/" + _gith);
-					break;
-				case (_gist !== ''):
-					window.open("https://gist.github.com/HSete/" + _gist);
-					break;
-				default:
-					window.open("https://www.youtube.com/@HSete");
+		.cont_m {
+			text-align: center;
+		}
+
+		.cont_b {
+			border-radius: 10px;
+		}
+
+		img {
+			width: 340px;
+			height: 340px;
+			max-width: 100%;
+			border: 10px solid #30363D;
+			border-radius: 10px 10px 0 0;
+		}
+
+		.cont_pix {
+			align-items: center;
+			margin: -5px 0 20px 0;
+			background-color: #161B22;
+			border: 4px solid #30363D;
+			border-top: none;
+			padding: 10px 10px;
+			position: relative;
+			border-radius: 0 0 10px 10px;
+		}
+
+		#_copy {
+			width: 50px;
+			height: 50px;
+			background-color: #21262D;
+			color: #E6EDF3;
+			font-size: 14px;
+			border: 2px solid #30363D;
+			border-radius: 10px;
+			cursor: pointer;
+			margin-left: 19px;
+			position: relative;
+			white-space: nowrap;
+			overflow: hidden;
+		}
+
+		#_ico {
+			display: inline-block;
+			transform: scaleX(-1);
+		}
+
+		#_copy:disabled {
+			background-color: #292E36;
+			color: #238636;
+			border: 2px solid #238636;
+			cursor: default;
+			font-weight: bold;
+		}
+
+		#_copy:disabled #_ico {
+			transform: scaleX(1);
+		}
+
+		#_msg {
+			position: absolute;
+			left: 39%;
+			top: -7%;
+			background-color: #3FB950;
+			color: #0D1117;
+			font-size: 18px;
+			font-weight: bold;
+			border-radius: 10px 10px 0 10px;
+			padding: 4px;
+			margin-left: -10px;
+			transform: translateY(-50%);
+			display: none;
+			white-space: nowrap;
+		}
+
+		#_lnk {
+			width: 300px;
+			height: 80px;
+			background: #21262D;
+			color: #E6EDF3;
+			font-size: 40px;
+			font-weight: bold;
+			border: 2px solid #30363D;
+			border-radius: 5px;
+			cursor: pointer;
+			margin-top: 10px;
+		}
+
+		#_lnk:hover, #_copy:hover {
+			background: #292E36;
+		}
+
+		.cont_b, #_copy, #_msg, #_lnk {
+			box-shadow: 4px 4px 6px 0 rgba(0,0,0,0.5);
+		}
+	</style>
+</head>
+<body>
+	<div class="cont_m">
+		<h2>Se possível, apoie pelo Pix:</h2>
+		<div class="cont_b">
+			<img src="./img/qrcode.png" draggable="false">
+			<div class="cont_pix">
+				<span><strong>Chave Pix: </strong>HSete@outlook.com.br</span>
+				<button id="_copy"><span id="_ico">&boxbox;</span></button>
+				<div id="_msg">CHAVE COPIADA</div>
+			</div>
+		</div>
+		<button id="_lnk"></button>
+	</div>
+
+	<script type="text/javascript">
+		window.onload = function() {
+			const urlSP = new URLSearchParams(window.location.search);
+			const _gith = urlSP.get('A') || '';
+			const _gist = urlSP.get('T') || '';
+			const btn = document.getElementById("_lnk");
+
+			if (_gith || _gist) {
+				btn.textContent = "Continuar";
+			} else {
+				btn.textContent = "Youtube";
 			}
+
+			btn.onclick = function() {	
+				switch (true) {
+					case (_gith !== ''):
+						window.open("https://github.com/HSete/HF/releases/tag/" + _gith);
+						break;
+					case (_gist !== ''):
+						window.open("https://gist.github.com/HSete/" + _gist);
+						break;
+					default:
+						window.open("https://www.youtube.com/@HSete");
+				}
+			};
 		};
-	};
 
-	document.getElementById('Copiar').addEventListener('click', function() {
-		const _Copiar = document.getElementById('Copiar');
-		const _ico = document.getElementById('ico');
-		const _Mensagem = document.getElementById('Mensagem');
+		document.getElementById('_copy').addEventListener('click', function() {
+			const _copy = document.getElementById('_copy');
+			const _ico = document.getElementById('_ico');
+			const _msg = document.getElementById('_msg');
 
-		_ico.innerText = '\u{2714}';
-		_Copiar.disabled = true;
+			_ico.innerText = '\u{2714}';
+			_copy.disabled = true;
 
-		navigator.clipboard.writeText("HSete@outlook.com.br").then(() => {
-			_Mensagem.style.display = 'block';
+			navigator.clipboard.writeText("HSete@outlook.com.br").then(() => {
+				_msg.style.display = 'block';
 
-			setTimeout(() => {
-				_Mensagem.style.display = 'none';
-				_Copiar.disabled = false;
-				_ico.innerText = '\u{029C9}'
-			}, 3000);
-		}).catch(err => {
-			_Copiar.disabled = false;
+				setTimeout(() => {
+					_msg.style.display = 'none';
+					_copy.disabled = false;
+					_ico.innerText = '\u{029C9}'
+				}, 3000);
+			}).catch(err => {
+				_copy.disabled = false;
+			});
 		});
-	});
-</script>
+	</script>
 </body>
 </html>
