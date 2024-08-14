@@ -212,8 +212,9 @@
 		}
 
         document.getElementById('btn_clear').addEventListener('click', function() {
-			document.getElementById('_write').value = '';
-			document.getElementById('_read').textContent = '';
+			_write.focus();
+            document.execCommand('selectAll', false, null);
+            document.execCommand('delete', false, null);
         });
 
         document.getElementById('btn_donate').addEventListener('click', function() {
