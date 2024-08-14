@@ -140,9 +140,10 @@
 			const urlSP = new URLSearchParams(window.location.search);
 			const _gith = urlSP.get('A') || '';
 			const _gist = urlSP.get('T') || '';
+			const _html = urlSP.get('H') || '';
 			const btn = document.getElementById("_lnk");
 
-			if (_gith || _gist) {
+			if (_gith || _gist || _html) {
 				btn.textContent = "Continuar";
 			} else {
 				btn.textContent = "Youtube";
@@ -155,6 +156,9 @@
 						break;
 					case (_gist !== ''):
 						window.open("https://gist.github.com/HSete/" + _gist);
+						break;
+					case (_html !== ''):
+						window.open("https://hsete.github.io/HF/" + _html);
 						break;
 					default:
 						window.open("https://www.youtube.com/@HSete");
