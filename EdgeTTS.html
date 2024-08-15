@@ -31,6 +31,9 @@
         }
 
         .cont_btn input {
+			background-color: #21262D;
+			color: #C9D1D9;
+			border-color: #30363D;
 			border: 2px solid #30363D;
 			padding: 10px 20px;
 			cursor: pointer;
@@ -40,10 +43,12 @@
 			box-shadow: 4px 4px 6px 0 rgba(0,0,0,0.5);
         }
 
+        .cont_btn input:hover {
+			background-color: #292E36;
+        }
+
         #btn_clear {
-			background-color: #21262D;
 			color: #F84537;
-			border-color: #30363D;
         }
 
         #btn_clear:hover {
@@ -54,33 +59,21 @@
 
 		#btn_openEdge {
 			display: none;
-			background-color: #21262D;
 			color: #57D75B;
-			border-color: #30363D;
 		}
 		
 		#btn_openEdge:hover {
 			background: #238636;
 			color: white;
-			border-color: #37914A
+			border-color: #37914A;
 		}
 
-        #btn_tutorial, #btn_Edge, #btn_Audacity {
-			background-color: #21262D;
-			color: #C9D1D9;
-			border-color: #30363D;
-        }
-
-        #btn_tutorial:hover, #btn_Edge:hover, #btn_Audacity:hover {
-			background-color: #292E36;
-			color: #C9D1D9;
-			border-color: #30363D;
-        }
+		#btn_downEdge {
+			display: none;
+		}
 
 		#btn_donate {
-			background-color: #21262D;
 			color: #FCC419;
-			border-color: #30363D;
 		}
 		
 		#btn_donate:hover {
@@ -172,7 +165,7 @@
 			<div>
 				<input type="button" id="btn_openEdge" value="Abrir Microsoft Edge" onclick="window.location.href = 'Microsoft-Edge:https://hsete.github.io/HF/EdgeTTS';">
 				<input type="button" id="btn_tutorial" value="Tutorial" onclick="window.open('https://youtu.be/sLFVEdzu5ak', '_blank');">
-				<input type="button" id="btn_Edge" value="Microsoft Edge" onclick="window.open('https://www.microsoft.com/pt-BR/edge/download', '_blank');">
+				<input type="button" id="btn_downEdge" value="Microsoft Edge" onclick="window.open('https://www.microsoft.com/pt-BR/edge/download', '_blank');">
 				<input type="button" id="btn_Audacity" value="Audacity" onclick="window.open('https://www.audacityteam.org/', '_blank');">
 			    <input type="button" id="btn_donate" value="Apoiar">
 			</div>
@@ -202,6 +195,7 @@
 
 			if (navigator.userAgent.indexOf('Edg/') === -1) {
 				document.getElementById('btn_openEdge').style.display = 'inline';
+				document.getElementById('btn_downEdge').style.display = 'inline';
 			}
 		});
 
