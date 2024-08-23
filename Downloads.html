@@ -48,9 +48,6 @@
             text-decoration: none;
             font-weight: bold;
         }
-        .asset_item:hover {
-            text-decoration: none;
-        }
         .download_count {
             text-align: center;
             color: #8D96A0;
@@ -58,6 +55,7 @@
         }
         .download_title {
             color: #8D96A0;
+            text-decoration: none;
         }
         tr:nth-child(odd) {
             background-color: #161B22;
@@ -81,7 +79,7 @@
                 thead.innerHTML = `
                     <tr>
                         <th></th>
-                        <th><span class="download_title">${totalDownloads.toLocaleString()}</span></th>
+                        <th><a href="https://github.com/HSete/HF" target="_blank" class="download_title">${totalDownloads.toLocaleString()}</a></th>
                     </tr>
                 `;
                 table.appendChild(thead);
@@ -103,7 +101,7 @@
 
                 table.appendChild(tbody);
                 document.getElementById('dataDisplay').appendChild(table);
-                table.querySelector('thead th:last-child').innerHTML = `<span class="download_title">${totalDownloads.toLocaleString()}</span>`;
+                table.querySelector('thead th:last-child a').innerHTML = totalDownloads.toLocaleString();
 
             } catch (error) {
                 document.getElementById('dataDisplay').innerHTML = '<p>Ocorreu um erro ao carregar os dados.</p>';
