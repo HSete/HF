@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Downloads</title>
+	<link rel="icon" href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAACXBIWXMAAB7CAAAewgFu0HU+AAAANUlEQVR42mNgoBVwmfzjPzIeNYAIA9A1EMIUGUKRS8jyP1kBSbRmfAqIkiM3nqlvALmYYgMAmygpXIylTxAAAAAASUVORK5CYII=">
+
+
+	<!-- Copyright (c) 2024 Humberto Freitas -->
+
+
+	<style>
+        body {
+            background-color: #0D1117;
+            color: #E6EDF3;
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            text-align: center;
+        }
+        table {
+            border-collapse: collapse;
+            margin: 20px auto;
+            background-color: #161B22;
+            border: 1px solid #30363D;
+        }
+        th, td {
+            padding: 8px;
+            border: 1px solid #30363D;
+        }
+        th {
+            background-color: #0D1117;
+            text-align: left;
+        }
+        th:first-child {
+            border-left: 1px solid #0D1117;
+            border-top: 1px solid #0D1117;
+            background-color: #0D1117;
+            color: transparent;
+        }
+        td {
+            text-align: left;
+        }
+        .asset_item {
+            color: #4493F8;
+            text-decoration: none;
+            font-weight: bold;
+        }
+        .asset_item:hover {
+            text-decoration: none;
+        }
+        .download_count {
+            text-align: center;
+            color: #8D96A0;
+            font-weight: bold;
+        }
+        .download_title {
+            color: #8D96A0;
+        }
+        tr:nth-child(odd) {
+            background-color: #161B22;
+        }
+        tr:nth-child(even) {
+            background-color: #0D1117;
+        }
+    </style>
+    <script>
+        async function fetchAndDisplaySpecificData() {
+            try {
+                const response = await fetch('https://api.github.com/repos/hsete/HF/releases');
+                const data = await response.json();
+
+                let totalDownloads = 0;
+
+                const table = document.createElement('table');
+                const thead = document.createElement('thead');
+                const tbody = document.createElement('tbody');
+
+                thead.innerHTML = `
+                    <tr>
+                        <th></th>
+                        <th><span class="download_title">${totalDownloads.toLocaleString()}</span></th>
+                    </tr>
+                `;
+                table.appendChild(thead);
+
+                data.forEach(item => {
+                    if (item.assets.length > 0) {
+                        item.assets.forEach(asset => {
+                            const row = document.createElement('tr');
+                            row.innerHTML = `
+                                <td><a href="${item.html_url}" target="_blank" class="asset_item">${asset.name}</a></td>
+                                <td class="download_count">${asset.download_count.toLocaleString()}</td>
+                            `;
+                            tbody.appendChild(row);
+
+                            totalDownloads += asset.download_count;
+                        });
+                    }
+                });
+
+                table.appendChild(tbody);
+                document.getElementById('dataDisplay').appendChild(table);
+                table.querySelector('thead th:last-child').innerHTML = `<span class="download_title">${totalDownloads.toLocaleString()}</span>`;
+
+            } catch (error) {
+                document.getElementById('dataDisplay').innerHTML = '<p>Ocorreu um erro ao carregar os dados.</p>';
+			}
+        }
+
+        window.onload = fetchAndDisplaySpecificData;
+    </script>
+</head>
+<body>
+    <div id="dataDisplay"></div>
+</body>
+</html>
