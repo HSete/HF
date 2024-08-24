@@ -16,21 +16,21 @@
 			background-color: #161B22;
 			margin: 0;
 			font-family: Arial, sans-serif;
-        }
+		}
 
-        .cont_m {
+		.cont_m {
 			display: flex;
 			flex-direction: column;
 			height: 100vh;
-        }
+		}
 
-        .cont_btn {
+		.cont_btn {
 			display: flex;
 			justify-content: space-between;
 			padding: 20px;
-        }
+		}
 
-        .cont_btn input {
+		.cont_btn input {
 			background-color: #21262D;
 			color: #C9D1D9;
 			border-color: #30363D;
@@ -41,21 +41,21 @@
 			margin: 10px;
 			border-radius: 10px;
 			box-shadow: 4px 4px 6px 0 rgba(0,0,0,0.5);
-        }
+		}
 
-        .cont_btn input:hover {
+		.cont_btn input:hover {
 			background-color: #292E36;
-        }
+		}
 
-        #btn_clear {
+		#btn_clear {
 			color: #F84537;
-        }
+		}
 
-        #btn_clear:hover {
+		#btn_clear:hover {
 			background-color: #B62324;
 			color: white;
 			border-color: #BB383A;
-        }
+		}
 
 		#btn_openEdge {
 			display: none;
@@ -82,13 +82,13 @@
 			border-color: #A77B00;
 		}
 
-        .cont_text {
+		.cont_text {
 			display: flex;
 			flex-direction: column;
 			flex-grow: 1;
-        }
+		}
 
-        #_write {
+		#_write {
 			width: 100%;
 			height: 40%;
 			background-color: #0D1117;
@@ -98,9 +98,9 @@
 			box-sizing: border-box;
 			resize: none;
 			outline: none;
-        }
+		}
 
-        #_read {
+		#_read {
 			display: block;
 			width: 100%;
 			color: #8D96A0;
@@ -110,9 +110,9 @@
 			height: calc(60vh - 10px);
 			word-wrap: break-word;
 			white-space: pre-wrap;
-        }
+		}
 
-        .modal_bg {
+		.modal_bg {
 			display: none;
 			position: fixed;
 			left: 0;
@@ -122,9 +122,9 @@
 			overflow: auto;
 			background-color: rgba(0, 0, 0, 0.6);
 			z-index: 1000;
-        }
+		}
 
-        .modal_m {
+		.modal_m {
 			background-color: #161B22;
 			margin: 15% auto;
 			padding: 20px;
@@ -139,7 +139,7 @@
 			left: 50%;
 			transform: translateX(-50%);
 			margin-top: 20px;
-        }
+		}
 
 		.modal_header {
 			position: relative;
@@ -154,11 +154,11 @@
 			width: 340px;
 			height: 340px;
 		}
-    </style>
+	</style>
 </head>
 <body>
-    <div class="cont_m">
-        <div class="cont_btn">
+	<div class="cont_m">
+		<div class="cont_btn">
 			<div>
 				<input type="button" id="btn_clear" value="Limpar">
 			</div>
@@ -167,28 +167,28 @@
 				<input type="button" id="btn_tutorial" value="Tutorial" onclick="window.open('https://youtu.be/sLFVEdzu5ak', '_blank');">
 				<input type="button" id="btn_downEdge" value="Microsoft Edge" onclick="window.open('https://www.microsoft.com/pt-BR/edge/download', '_blank');">
 				<input type="button" id="btn_Audacity" value="Audacity" onclick="window.open('https://www.audacityteam.org/', '_blank');">
-			    <input type="button" id="btn_donate" value="Apoiar">
+				<input type="button" id="btn_donate" value="Apoiar">
 			</div>
-        </div>
-        <div class="cont_text">
+		</div>
+		<div class="cont_text">
 			<textarea id="_write"></textarea>
 			<span id="_read"></span>
-        </div>
-    </div>
+		</div>
+	</div>
 
-    <div id="modal_bg" class="modal_bg">
-        <div class="modal_m">
+	<div id="modal_bg" class="modal_bg">
+		<div class="modal_m">
 			<div class="modal_header">
-			    <h2>Apoie pelo Pix:</h2>
+				<h2>Apoie pelo Pix:</h2>
 			</div>
 			<div class="modal_body">
-			    <p><img src="./img/qrcode.png" draggable="false"></p>
-			    <p><span><strong>Chave Pix: </strong>HSete@outlook.com.br</span></p>
+				<p><img src="./img/qrcode.png" draggable="false"></p>
+				<p><span><strong>Chave Pix: </strong>HSete@outlook.com.br</span></p>
 			</div>
-        </div>
-    </div>
+		</div>
+	</div>
 
-    <script>
+	<script>
 		window.addEventListener('DOMContentLoaded', function() {
 			document.getElementById('_write').value = '';
 			document.getElementById('_read').textContent = '';
@@ -199,25 +199,25 @@
 			}
 		});
 
-        window.onclick = function(event) {
+		window.onclick = function(event) {
 			if (event.target === document.getElementById('modal_bg')) {
-			    document.getElementById('modal_bg').style.display = 'none';
+				document.getElementById('modal_bg').style.display = 'none';
 			}
 		}
 
-        document.getElementById('btn_clear').addEventListener('click', function() {
+		document.getElementById('btn_clear').addEventListener('click', function() {
 			_write.focus();
-            document.execCommand('selectAll', false, null);
-            document.execCommand('delete', false, null);
-        });
+			document.execCommand('selectAll', false, null);
+			document.execCommand('delete', false, null);
+		});
 
-        document.getElementById('btn_donate').addEventListener('click', function() {
+		document.getElementById('btn_donate').addEventListener('click', function() {
 			document.getElementById('modal_bg').style.display = 'block';
-        });
+		});
 
 		document.getElementById('_write').addEventListener('input', function() {
 			document.getElementById('_read').textContent = document.getElementById('_write').value;
 		});
-    </script>
+	</script>
 </body>
 </html>
